@@ -15,15 +15,15 @@ and returning the cached result
 */
 
 const memoize = function (fn) {
-    const cache = {};
-    return function(...args) {
-        let key = String(args);
-        if(key in cache) {
-            return cache(key);
-        }
-
-        let result = fn(...args)
-        cache[key] = result;
-        return result;
+  const cache = {};
+  return function (...args) {
+    let key = String(args);
+    if (key in cache) {
+      return cache(key);
     }
-}
+
+    let result = fn(...args);
+    cache[key] = result;
+    return result;
+  };
+};

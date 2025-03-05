@@ -17,8 +17,8 @@ Output: 200
 Explanation: It should return a promise that resolves after 200ms.
 */
 
-async function sleep(millis){
-    return new Promise( resolve => {
-        setTimeout(resolve, millis)
-    })
+async function sleep(millis) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, millis);
+  });
 }
