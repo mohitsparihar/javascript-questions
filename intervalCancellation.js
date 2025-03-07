@@ -30,7 +30,7 @@ function cancellable(fn, args, t) {
     const timer = setInterval(() => fn(...args), t);
 
     const cancelFn = () => {
-        clearInterval(timer;
+        clearInterval(timer);
     }
 
     return cancelFn;
