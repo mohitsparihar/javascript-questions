@@ -88,3 +88,31 @@ TimeLimitedCache.prototype.count = function() {
     }
     return count;
 }
+///////////////////////////////////////////////////////////////
+// Solution using javascript Map
+
+const TimeLimitedCache2 = function() {
+    this.cache = new Map();
+}
+
+TimeLimitedCache2.prototype.set = (key, value, duration) => {
+    const keyExists = this.cache.has(key);
+
+    if(keyExists) {
+        clearTimeout(this.cache.get(key).timer);
+    }
+
+    let timer = setTimeout(() => this.cache.delete(key), duration)
+
+    this.cache.set(key, (value, timer))
+
+    return keyExists;
+}
+
+TimeLimitedCache2.prototype.get = (key) => {
+    return this.cache.has(key) ? this.cache.get(key).value : -1;
+}
+
+TimeLimitedCache2.prototype.count = () => {
+    return this.cache.size;
+}
